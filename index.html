@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário Versátil da Air Fryer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #1f2937;
+            text-decoration: none;
+        }
+
+        .nav-icon {
+            color: #f97316;
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #374151;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #f97316;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .hero {
+            padding: 6rem 1rem 4rem;
+            background: linear-gradient(135deg, #fed7aa 0%, #ffffff 100%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .hero-content {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        .hero h1 .highlight {
+            display: block;
+            color: #f97316;
+            margin-top: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .btn-group {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #f97316;
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #ea580c;
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #f97316;
+            border: 2px solid #f97316;
+        }
+
+        .btn-secondary:hover {
+            background: #fff7ed;
+            transform: scale(1.05);
+        }
+
+        .hero-image {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #fed7aa 0%, #fef3c7 100%);
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section {
+            padding: 5rem 1rem;
+        }
+
+        .section-white {
+            background: white;
+        }
+
+        .section-gray {
+            background: #f9fafb;
+        }
+
+        .section-orange {
+            background: linear-gradient(135deg, #fed7aa 0%, #ffffff 100%);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 56rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-dark {
+            background: #1f2937;
+            color: white;
+            margin-top: 1.5rem;
+        }
+
+        .btn-dark:hover {
+            background: #111827;
+            transform: scale(1.05);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: translateY(-8px);
+        }
+
+        .feature-icon {
+            color: #f97316;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: #4b5563;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1152px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .story-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .story-text p {
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+
+        .story-image {
+            aspect-ratio: 1;
+            background: url('/wp-content/uploads/2025/10/Maria-Silva-Copia.png') center center / cover no-repeat;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .value-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .value-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            color: #f97316;
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .value-content h3 {
+            font-size: 1.125rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-content p {
+            color: #4b5563;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .articles-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .article-card:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: translateY(-8px);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #fed7aa 0%, #fef3c7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: #fff7ed;
+            color: #f97316;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+            color: #1f2937;
+        }
+
+        .article-excerpt {
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        .article-meta svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .cta-section {
+            padding: 5rem 1rem;
+            background: linear-gradient(90deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .cta-section p {
+            font-size: 1.125rem;
+            color: #fed7aa;
+            margin-bottom: 2rem;
+        }
+
+        .btn-white {
+            background: white;
+            color: #f97316;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-white:hover {
+            background: #f9fafb;
+            transform: scale(1.05);
+        }
+
+        .btn-orange-dark {
+            background: #c2410c;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-orange-dark:hover {
+            background: #9a3412;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background: #1f2937;
+            color: #d1d5db;
+            padding: 3rem 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1280px;
+            margin: 0 auto 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: white;
+        }
+
+        .footer-text {
+            color: #9ca3af;
+        }
+
+        .footer h3 {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #f97316;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            color: #d1d5db;
+            transition: color 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #f97316;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            text-align: center;
+            color: #6b7280;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="/" class="nav-logo">
+                <svg class="nav-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                </svg>
+                <span>Diário Versátil da Air Fryer</span>
+            </a>
+            <div class="nav-links">
+                <a href="/quem-somos/">Quem Somos</a>
+                <a href="/category/reviews/">Air Fryers Recomendadas</a>
+                <a href="/termos-de-uso/">Termos de Uso</a>
+                <a href="/politica-de-privacidade/">Política de Privacidade</a>
+                <a href="/contato/">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <h1>
+                    Descubra o Poder da Air Fryer
+                    <span class="highlight">Cozinhar Nunca Foi Tão Simples</span>
+                </h1>
+                <p>
+                    Transforme sua cozinha com praticidade, sabor e saúde. Aprenda tudo sobre Air Fryers e revolucione sua forma de cozinhar.
+                </p>
+                <div class="btn-group">
+                    <a href="/category/reviews/" class="btn btn-primary">Ver Melhores Modelos</a>
+                    <a href="/artigos-recentes/" class="btn btn-secondary">Receitas Saudáveis</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <svg style="width: 256px; height: 256px; opacity: 0.2; color: #f97316;" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nós -->
+    <section class="section section-white">
+        <div class="about-content">
+            <h2 class="section-title">Sobre Nós</h2>
+            <p>
+                No Diário Versátil da Air Fryer, mostramos que cozinhar bem pode ser simples, rápido e saudável.
+                Criado por Maria Silva, especialista em alimentação prática, o site é o seu guia definitivo sobre Air Fryers.
+            </p>
+            <a href="/quem-somos/" class="btn btn-dark">Conheça Nossa História</a>
+        </div>
+    </section>
+
+    <!-- O Que Você Encontra Aqui -->
+    <section class="section section-gray">
+        <h2 class="section-title">O Que Você Encontra Aqui</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                </svg>
+                <h3>Reviews Completos</h3>
+                <p>Análises detalhadas e honestas dos melhores modelos de Air Fryer do mercado.</p>
+            </div>
+            <div class="feature-card">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                </svg>
+                <h3>Comparativos Práticos</h3>
+                <p>Compare modelos lado a lado e encontre a Air Fryer perfeita para você.</p>
+            </div>
+            <div class="feature-card">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+                <h3>Guias de Compra</h3>
+                <p>Orientações claras e promoções exclusivas para você fazer a melhor escolha.</p>
+            </div>
+            <div class="feature-card">
+                <svg class="feature-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                </svg>
+                <h3>Receitas Testadas</h3>
+                <p>Centenas de receitas aprovadas, fáceis e deliciosas para o dia a dia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nossa História -->
+    <section class="section section-white">
+        <div class="story-grid">
+            <div class="story-text">
+                <h2 class="section-title" style="text-align: left;">Nossa História</h2>
+                <p>
+                    Tudo começou quando Maria Silva, mãe de dois filhos e profissional ocupada,
+                    descobriu que era possível preparar refeições deliciosas e saudáveis em minutos.
+                </p>
+                <p>
+                    Cansada de passar horas na cozinha e preocupada com a alimentação da família,
+                    Maria encontrou na Air Fryer a solução perfeita: praticidade sem abrir mão do sabor.
+                </p>
+                <p>
+                    Após transformar completamente sua rotina, Maria decidiu compartilhar suas descobertas
+                    e criar o Diário Versátil da Air Fryer — um espaço onde milhares de pessoas aprendem
+                    a cozinhar melhor, viver mais leve e aproveitar cada momento à mesa.
+                </p>
+            </div>
+            <div class="story-image"></div>
+        </div>
+    </section>
+
+    <!-- Nossos Valores -->
+    <section class="section section-orange">
+        <h2 class="section-title">Nossos Valores</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <svg class="value-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                </svg>
+                <div class="value-content">
+                    <h3>Clareza e Honestidade</h3>
+                    <p>Informações transparentes e reviews imparciais para você decidir com confiança.</p>
+                </div>
+            </div>
+            <div class="value-card">
+                <svg class="value-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+                <div class="value-content">
+                    <h3>Saúde em Primeiro Lugar</h3>
+                    <p>Receitas e dicas que priorizam o bem-estar da sua família.</p>
+                </div>
+            </div>
+            <div class="value-card">
+                <svg class="value-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                </svg>
+                <div class="value-content">
+                    <h3>Praticidade Sempre</h3>
+                    <p>Soluções simples para quem tem uma rotina agitada e quer cozinhar bem.</p>
+                </div>
+            </div>
+            <div class="value-card">
+                <svg class="value-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+                <div class="value-content">
+                    <h3>Comunidade Ativa</h3>
+                    <p>Um espaço acolhedor para compartilhar experiências e aprender juntos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artigos Recentes -->
+    <section class="section section-white">
+        <h2 class="section-title">Artigos Recentes</h2>
+        <div class="articles-grid">
+            <!-- Artigo 1 -->
+            <a href="#" class="article-card">
+                <div class="article-image">
+                    <svg style="width: 80px; height: 80px; opacity: 0.3; color: #f97316;" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                    </svg>
+                </div>
+                <div class="article-content">
+                    <span class="article-category">Receitas</span>
+                    <h3 class="article-title">Título do Artigo 1</h3>
+                    <p class="article-excerpt">Breve descrição do artigo que aparece aqui com algumas linhas de texto...</p>
+                    <div class="article-meta">
+                        <svg fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>18 Out 2025</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Artigo 2 -->
+            <a href="#" class="article-card">
+                <div class="article-image">
+                    <svg style="width: 80px; height: 80px; opacity: 0.3; color: #f97316;" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                    </svg>
+                </div>
+                <div class="article-content">
+                    <span class="article-category">Reviews</span>
+                    <h3 class="article-title">Título do Artigo 2</h3>
+                    <p class="article-excerpt">Breve descrição do artigo que aparece aqui com algumas linhas de texto...</p>
+                    <div class="article-meta">
+                        <svg fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>17 Out 2025</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Artigo 3 -->
+            <a href="#" class="article-card">
+                <div class="article-image">
+                    <svg style="width: 80px; height: 80px; opacity: 0.3; color: #f97316;" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                    </svg>
+                </div>
+                <div class="article-content">
+                    <span class="article-category">Dicas</span>
+                    <h3 class="article-title">Título do Artigo 3</h3>
+                    <p class="article-excerpt">Breve descrição do artigo que aparece aqui com algumas linhas de texto...</p>
+                    <div class="article-meta">
+                        <svg fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>16 Out 2025</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Artigo 4 -->
+            <a href="#" class="article-card">
+                <div class="article-image">
+                    <svg style="width: 80px; height: 80px; opacity: 0.3; color: #f97316;" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                    </svg>
+                </div>
+                <div class="article-content">
+                    <span class="article-category">Receitas</span>
+                    <h3 class="article-title">Título do Artigo 4</h3>
+                    <p class="article-excerpt">Breve descrição do artigo que aparece aqui com algumas linhas de texto...</p>
+                    <div class="article-meta">
+                        <svg fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>15 Out 2025</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Artigo 5 -->
+            <a href="#" class="article-card">
+                <div class="article-image">
+                    <svg style="width: 80px; height: 80px; opacity: 0.3; color: #f97316;" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                    </svg>
+                </div>
+                <div class="article-content">
+                    <span class="article-category">Guias</span>
+                    <h3 class="article-title">Título do Artigo 5</h3>
+                    <p class="article-excerpt">Breve descrição do artigo que aparece aqui com algumas linhas de texto...</p>
+                    <div class="article-meta">
+                        <svg fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>14 Out 2025</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Artigo 6 -->
+            <a href="#" class="article-card">
+                <div class="article-image">
+                    <svg style="width: 80px; height: 80px; opacity: 0.3; color: #f97316;" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                    </svg>
+                </div>
+                <div class="article-content">
+                    <span class="article-category">Reviews</span>
+                    <h3 class="article-title">Título do Artigo 6</h3>
+                    <p class="article-excerpt">Breve descrição do artigo que aparece aqui com algumas linhas de texto...</p>
+                    <div class="article-meta">
+                        <svg fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>13 Out 2025</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Faça Parte Dessa Revolução Culinária!</h2>
+            <p>Receba receitas exclusivas, dicas práticas e as melhores ofertas diretamente no seu email.</p>
+            <div class="btn-group">
+                <a href="/contato/" class="btn btn-white">
+                    <svg fill="none" stroke="currentColor" viewbox="0 0 24 24" style="width: 20px; height: 20px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    Inscreva-se na Newsletter
+                </a>
+                <a href="/contato/" class="btn btn-orange-dark">
+                    <svg fill="none" stroke="currentColor" viewbox="0 0 24 24" style="width: 20px; height: 20px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                    </svg>
+                    Compartilhe Sua Experiência
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                    </svg>
+                    <span>Diário Versátil</span>
+                </div>
+                <p class="footer-text">
+                    Seu guia definitivo para cozinhar com praticidade, sabor e saúde usando Air Fryer.
+                </p>
+            </div>
+            <div>
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="/quem-somos/">Quem Somos</a></li>
+                    <li><a href="/category/reviews/">Air Fryers Recomendadas</a></li>
+                    <li><a href="/termos-de-uso/">Termos de Uso</a></li>
+                    <li><a href="/politica-de-privacidade/">Política de Privacidade</a></li>
+                    <li><a href="/contato/">Contato</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Redes Sociais</h3>
+                <div class="social-links">
+                    <a href="#" class="social-icon">
+                        <svg fill="currentColor" viewbox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg fill="currentColor" viewbox="0 0 24 24">
+                            <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg fill="currentColor" viewbox="0 0 24 24">
+                            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Diário Versátil da Air Fryer. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script para carregar artigos dinamicamente do WordPress
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL da API REST do WordPress para buscar os últimos 6 posts
+            const apiUrl = '/wp-json/wp/v2/posts?per_page=6&_embed';
+            
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(posts => {
+                    const articlesGrid = document.querySelector('.articles-grid');
+                    articlesGrid.innerHTML = '';
+                    
+                    posts.forEach(post => {
+                        // Pegar a imagem destacada
+                        let imageUrl = '';
+                        if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0]) {
+                            imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
+                        }
+                        
+                        // Pegar a categoria
+                        let category = 'Artigo';
+                        if (post._embedded && post._embedded['wp:term'] && post._embedded['wp:term'][0] && post._embedded['wp:term'][0][0]) {
+                            category = post._embedded['wp:term'][0][0].name;
+                        }
+                        
+                        // Formatar a data
+                        const date = new Date(post.date);
+                        const formattedDate = date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+                        
+                        // Criar o excerpt (resumo)
+                        const excerpt = post.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 120) + '...';
+                        
+                        // Criar o card do artigo
+                        const articleCard = `
+                            <a href="${post.link}" class="article-card">
+                                <div class="article-image" style="${imageUrl ? `background: url('${imageUrl}') center center / cover no-repeat;` : ''}">
+                                    ${!imageUrl ? `
+                                    <svg style="width: 80px; height: 80px; opacity: 0.3; color: #f97316;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                                    </svg>
+                                    ` : ''}
+                                </div>
+                                <div class="article-content">
+                                    <span class="article-category">${category}</span>
+                                    <h3 class="article-title">${post.title.rendered}</h3>
+                                    <p class="article-excerpt">${excerpt}</p>
+                                    <div class="article-meta">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                        </svg>
+                                        <span>${formattedDate}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        `;
+                        
+                        articlesGrid.innerHTML += articleCard;
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar artigos:', error);
+                });
+        });
+    </script>
+</body>
+</html>
