@@ -1,0 +1,125 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { CATEGORIAS, SITE, NOME, type Categoria } from '../../config';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { categoria: post.data.categoria, slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const cat = post.data.categoria as Categoria;
+const nomeCat = CATEGORIAS[cat].nome;
+const isReceita = cat.startsWith('receitas');
+const isDiabetico = cat === 'receitas-para-diabeticos';
+const url = SITE + '/' + cat + '/' + post.id + '/';
+const { Content } = await render(post);
+const published = post.data.pubDate.toISOString();
+const modified = (post.data.updatedDate ?? post.data.pubDate).toISOString();
+const imageUrl = post.data.image && post.data.image.startsWith('/') ? SITE + post.data.image : undefined;
+
+const all = await getCollection('blog', ({ data }) => !data.draft);
+const related = all
+  .filter((p) => p.id !== post.id && (p.data.categoria === post.data.categoria || p.data.tags.some((t) => post.data.tags.includes(t))))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: published,
+  dateModified: modified,
+  inLanguage: 'pt-BR',
+  author: { '@type': 'Organization', name: NOME, url: SITE + '/' },
+  publisher: { '@type': 'Organization', name: NOME, url: SITE + '/' },
+  mainEntityOfPage: url,
+  keywords: post.data.keyword || post.data.tags.join(', '),
+  ...(imageUrl ? { image: imageUrl } : {}),
+};
+
+const recipe = isReceita
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Recipe',
+      name: post.data.title,
+      description: post.data.description,
+      datePublished: published,
+      ...(imageUrl ? { image: imageUrl } : {}),
+      ...(post.data.tempoPreparo ? { prepTime: post.data.tempoPreparo } : {}),
+      ...(post.data.tempoCozimento ? { cookTime: post.data.tempoCozimento } : {}),
+      ...(post.data.rendimento ? { recipeYield: post.data.rendimento } : {}),
+      recipeIngredient: post.data.ingredientes,
+      recipeCategory: nomeCat,
+      inLanguage: 'pt-BR',
+      author: { '@type': 'Organization', name: NOME },
+    }
+  : null;
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Início', item: SITE + '/' },
+    { '@type': 'ListItem', position: 2, name: nomeCat, item: SITE + '/' + cat + '/' },
+    { '@type': 'ListItem', position: 3, name: post.data.title, item: url },
+  ],
+};
+
+const faqSchema = post.data.faq.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: post.data.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    }
+  : null;
+---
+<Layout title={post.data.title} description={post.data.description} canonical={url} ogImage={imageUrl} ogType="article" publishedTime={published} modifiedTime={modified}>
+  <script type="application/ld+json" set:html={JSON.stringify(article)} />
+  {recipe && <script type="application/ld+json" set:html={JSON.stringify(recipe)} />}
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+  <header class="site"><div class="wrap"><a class="logo" href="/">{NOME}</a></div></header>
+  <main class="wrap article">
+    <nav aria-label="Você está em"><a href="/">Início</a> › <a href={'/' + cat + '/'}>{nomeCat}</a> › <span>{post.data.title}</span></nav>
+    <h1>{post.data.title}</h1>
+    <p class="meta">
+      <time datetime={published}>{post.data.pubDate.toLocaleDateString('pt-BR')}</time>
+      {post.data.updatedDate && <span> · atualizado em <time datetime={modified}>{post.data.updatedDate.toLocaleDateString('pt-BR')}</time></span>}
+    </p>
+    {post.data.image && <img src={post.data.image} alt={post.data.imageAlt ?? ''} width="1200" height="630" />}
+    {isDiabetico && (
+      <aside class="aviso">
+        <p><strong>Aviso:</strong> esta receita não substitui o acompanhamento médico ou nutricional. Consulte seu médico ou nutricionista antes de mudar sua alimentação.</p>
+      </aside>
+    )}
+    {isReceita && post.data.ingredientes.length > 0 && (
+      <section class="ingredientes">
+        <h2>Ingredientes</h2>
+        <ul>{post.data.ingredientes.map((i) => <li>{i}</li>)}</ul>
+      </section>
+    )}
+    <Content />
+    {isDiabetico && post.data.fontes.length > 0 && (
+      <section class="fontes">
+        <h2>Fontes</h2>
+        <ul>{post.data.fontes.map((f) => <li>{f}</li>)}</ul>
+      </section>
+    )}
+    {post.data.faq.length > 0 && (
+      <section class="faq">
+        <h2>Perguntas frequentes</h2>
+        {post.data.faq.map((f) => <div><h3>{f.q}</h3><p>{f.a}</p></div>)}
+      </section>
+    )}
+    {related.length > 0 && (
+      <section class="related">
+        <h2>Leia também</h2>
+        <ul>{related.map((r) => <li><a href={'/' + r.data.categoria + '/' + r.id + '/'}>{r.data.title}</a></li>)}</ul>
+      </section>
+    )}
+  </main>
+  <footer class="site"><p>© 2026 {NOME}</p></footer>
+</Layout>
