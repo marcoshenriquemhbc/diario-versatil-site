@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { CATEGORIAS, SITE, NOME } from '../../config';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<Layout title={'Blog - ' + NOME} description="Todas as receitas e análises publicadas no Diário Versátil." canonical={SITE + '/blog/'}>
+  <header class="site"><div class="wrap"><a class="logo" href="/">{NOME}</a></div></header>
+  <main class="wrap article">
+    <h1>Blog</h1>
+    <ul class="post-list">
+      {posts.map((p) => <li><a href={'/' + p.data.categoria + '/' + p.id + '/'}><h2>{p.data.title}</h2></a><p>{CATEGORIAS[p.data.categoria].nome} · {p.data.pubDate.toLocaleDateString('pt-BR')}</p><p>{p.data.description}</p></li>)}
+    </ul>
+    {posts.length === 0 && <p>Em breve, novos conteúdos.</p>}
+  </main>
+  <footer class="site"><p>© 2026 {NOME}</p></footer>
+</Layout>
